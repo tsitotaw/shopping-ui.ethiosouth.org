@@ -1,0 +1,14 @@
+.content__container{
+  margin: 0 auto;
+  width: 65%;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.flex-container{
+  display: flex;
+}
+
+.error__message__label{
+  color: red;
+}
