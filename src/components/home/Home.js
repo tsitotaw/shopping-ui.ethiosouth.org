@@ -1,8 +1,9 @@
+import CollectionsOverview from "../collections-overview/collections-overview.component";
 const Home = props => {
 
     return (
         <div>
-            Home goes here ---
+            <CollectionsOverview></CollectionsOverview>
         </div>
     );
 }
