@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import './App.scss'
 import Header from './components/header/Header';
 import MainRoute from './components/routes/MainRoute';
 
