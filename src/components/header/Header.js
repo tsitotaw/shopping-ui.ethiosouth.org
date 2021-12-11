@@ -2,6 +2,7 @@ import React from "react";
 import logo from '../../logo.png';
 import { Card, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import CartIcon from "../cart-icon/cart-icon.component";
 
 const Header = () => {
     return (
@@ -17,10 +18,10 @@ const Header = () => {
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="me-auto">
                                 <Link className="nav-link" to="/" > Home</Link>
-                                <NavDropdown title="Logout" id="basic-nav-dropdown">
-                                    <Nav.Link href="" >Logout</Nav.Link>
+                                <Link className="nav-link" to="/signin">Signin</Link>
+                                <NavDropdown title={<CartIcon/>} id="basic-nav-dropdown">
+                                    <Nav.Link href="" >Nothing yet</Nav.Link>
                                 </NavDropdown>
-                                <Link className="nav-link" to="/" > Cart</Link>
                             </Nav>
                         </Navbar.Collapse>
                     </div>
