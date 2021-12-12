@@ -25,10 +25,8 @@ const Header = () => {
                             <Nav className="me-auto">
                                 <Link className="nav-link" to="/" > Home</Link>
                                 <Nav.Link href="" onClick={onLogoutHandler}>Logout</Nav.Link>
-                                <NavDropdown title={<CartIcon/>} id="basic-nav-dropdown">
-                                    <Nav.Link href="" >Nothing yet</Nav.Link>
-                                </NavDropdown>
                             </Nav>
+                            <CartIcon/>
                         </Navbar.Collapse>
                     </div>
                 </Container>
