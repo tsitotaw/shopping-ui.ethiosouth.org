@@ -5,6 +5,12 @@ import { Link } from 'react-router-dom';
 import CartIcon from "../cart-icon/cart-icon.component";
 
 const Header = () => {
+
+    const onLogoutHandler = (event) => {
+        localStorage.removeItem("token");
+        window.location.href = '/signin';
+      };
+
     return (
         <>
             <Navbar bg="light" expand="lg">
@@ -18,7 +24,7 @@ const Header = () => {
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="me-auto">
                                 <Link className="nav-link" to="/" > Home</Link>
-                                <Link className="nav-link" to="/signin">Signin</Link>
+                                <Nav.Link href="" onClick={onLogoutHandler}>Logout</Nav.Link>
                                 <NavDropdown title={<CartIcon/>} id="basic-nav-dropdown">
                                     <Nav.Link href="" >Nothing yet</Nav.Link>
                                 </NavDropdown>

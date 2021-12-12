@@ -4,21 +4,28 @@ import CustomButton from '../custom-button/custom-button.component';
 import axiosApiHelper from '../../api/axiosApiHelper';
 
 import './sign-in.styles.scss';
-import { useNavigate } from 'react-router';
+// import { useNavigate } from 'react-router';
 
-const SignIn = () => {
+const SignIn = (props) => {
 
-  const navigate = useNavigate();
-  let [userName, setUserName] = useState('')
-  let [password, setPassword] = useState('')
+  // const navigate = useNavigate();
+  let [userName, setUserName] = useState('aadmin@gmail.com')
+  let [password, setPassword] = useState('admin')
 
   const handleSignin = event => {
     event.preventDefault();
     axiosApiHelper.authenticate(userName, password).then((res) => {
+      if(!res.data){
+        props.onLoggingIn(false);
+        alert("Invalid User Login");
+        return false;
+      }
       localStorage.setItem("token", res.data.access_token);
-      navigate("/");
+      props.onLoggingIn(true);
+      return true;
     }, (err) => {
-      console.log(err);
+      props.onLoggingIn(false);
+      return false;
     });
   }
 
