@@ -15,7 +15,6 @@ const SignIn = (props) => {
   const handleSignin = event => {
     event.preventDefault();
     axiosApiHelper.authenticate(userName, password).then((res) => {
-      console.log(res)
       if(!res.data){
         props.onLoggingIn(false);
         alert("Invalid User Login");
