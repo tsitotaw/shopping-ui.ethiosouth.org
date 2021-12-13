@@ -1,10 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import logo from '../../logo.png';
 import { Card, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import CartIcon from "../cart-icon/cart-icon.component";
 
-const Header = () => {
+const Header = (props) => {
 
     const onLogoutHandler = (event) => {
         localStorage.removeItem("token");
@@ -25,8 +25,8 @@ const Header = () => {
                             <Nav className="me-auto">
                                 <Link className="nav-link" to="/" > Home</Link>
                                 <Nav.Link href="" onClick={onLogoutHandler}>Logout</Nav.Link>
+                                <Link  to="/cart" ><CartIcon onAdd={props.onAdd} cartItems={props.cartItems}/></Link>
                             </Nav>
-                            <CartIcon/>
                         </Navbar.Collapse>
                     </div>
                 </Container>
