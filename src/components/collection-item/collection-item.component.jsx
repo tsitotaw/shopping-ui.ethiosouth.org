@@ -4,18 +4,19 @@ import CustomButton from '../custom-button/custom-button.component';
 import './collection-item.styles.scss';
 
 const CollectionItem = ({item, onAdd, cartItems}) => {
-  const { name, price, imageUrl } = item;
+  const { name, price, img } = item;
 
   return (
     <div className='collection-item'>
       <div
         className='image'
         style={{
-          backgroundImage: `url(${imageUrl})`
+          backgroundImage: `url(${img})`
         }}
       />
       <div className='collection-footer'>
         <span className='name'>{name}</span>
+        <span className='price'>{price}</span>
         
       </div>
       <CustomButton
