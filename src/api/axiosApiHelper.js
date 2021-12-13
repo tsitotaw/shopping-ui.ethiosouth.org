@@ -5,13 +5,13 @@ const axiosApiHelper = (() => {
 
    const baseUrl = "http://localhost:8081/";
    const apiPrefix = "api/v1/"
-   const header = {
+   let header = {
       "Content-Type": "application/x-www-form-urlencoded",
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
       "Authorization": "Bearer " + localStorage.getItem("token") 
    };
-
+   
    const authenticate = (username, password) => {
       return axios({
          method: 'POST', headers: header, data: qs.stringify({
@@ -34,7 +34,7 @@ const axiosApiHelper = (() => {
 
    const save = (data, resource) => {
       return axios({
-         method: 'POST', headers: header, data: qs.stringify(data),
+         method: 'POST', data : qs.stringify(data), headers: header,
          url: baseUrl.concat(apiPrefix).concat(resource)
       })
          .then((data) => {
@@ -75,10 +75,14 @@ const axiosApiHelper = (() => {
          });
    };
 
-   const findAll = (resource) => {
+   const findAll = (resource, noAuth) => {
+      let header_local = header;
+      if(noAuth){
+         delete header.Authorization;
+      }
       return axios({
          method: 'GET',
-         headers: header,
+         headers: header_local,
          url: baseUrl.concat(apiPrefix).concat(resource)
       })
          .then((res) => {
