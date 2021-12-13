@@ -5,13 +5,10 @@ import CartIcon from "../cart-icon/cart-icon.component";
 import CartPage from "../cart-page/Cart-page";
 import Home from "../home/Home";
 import SignIn from "../sign-in/sign-in.component";
-import SignUp from "../sign-up/sign-up.component";
+import SignUp from "../sign-up/SignUp.component";
 
 const MainRoute = (props) => {
-<<<<<<< HEAD
-=======
     const { cartItems, total, onAdd, onRemove, onClearCartItem} = props;
->>>>>>> f5e7f738fea4fe58f0c693225ca41d4abd6ef714
     const navigate = useNavigate();
     const [isLoggedIn, setLoggedIn] = useState(false);
 
@@ -25,28 +22,23 @@ const MainRoute = (props) => {
     };
     return (
         <>
-<<<<<<< HEAD
-            <Routes>
+            {/* <Routes>
                 
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/signin" element={<SignIn onLoggingIn={userLoggedInHandler}/>} />
                 {isLoggedIn && <Route path="/" element={ <Home />} /> }
                 
-            </Routes>
-=======
-            {!isLoggedIn && <SignIn onLoggingIn={userLoggedInHandler} />}
-            {isLoggedIn &&
+            </Routes> */}
                 <Routes>
-                    <Route path="/" element={<Home onAdd={props.onAdd} />} />
-                    <Route path="/signin" element={<SignIn />} />
+                    {isLoggedIn && <Route path="/" element={<Home onAdd={props.onAdd} />} /> }
+                    <Route path="/signin" element={<SignIn onLoggingIn={userLoggedInHandler}/>} />
+                    <Route path="/signup" element={<SignUp />} />
                     <Route path="/cart" element={<CartPage cartItems={cartItems}
                         total={total}
                         onAdd={onAdd} 
                         onRemove={onRemove}
                         onClearCartItem={onClearCartItem}/>} />
                 </Routes>
-            }
->>>>>>> f5e7f738fea4fe58f0c693225ca41d4abd6ef714
         </>
     );
 };
