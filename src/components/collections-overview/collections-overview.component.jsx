@@ -6,10 +6,10 @@ import SHOP_DATA from '../../shop.data';
 
 import './collections-overview.styles.scss';
 
-const CollectionsOverview = () => (
+const CollectionsOverview = ({onAdd, cartItems}) => (
   <div className='collections-overview'>
     {SHOP_DATA.map(({ id, ...otherCollectionProps }) => (
-      <CollectionPreview key={id} {...otherCollectionProps} />
+      <CollectionPreview key={id} {...otherCollectionProps} onAdd={onAdd} />
     ))}
   </div>
 );

@@ -1,9 +1,9 @@
 import CollectionsOverview from "../collections-overview/collections-overview.component";
 const Home = props => {
-
+    let {cartItems} = props;
     return (
         <div>
-            <CollectionsOverview></CollectionsOverview>
+            <CollectionsOverview onAdd={props.onAdd}></CollectionsOverview>
         </div>
     );
 }
