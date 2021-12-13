@@ -24,6 +24,7 @@ const Header = () => {
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="me-auto">
                                 <Link className="nav-link" to="/" > Home</Link>
+                                {/* <Link className="nav-link" to="/signup" > SignUp</Link> */}
                                 <Nav.Link href="" onClick={onLogoutHandler}>Logout</Nav.Link>
                                 <NavDropdown title={<CartIcon/>} id="basic-nav-dropdown">
                                     <Nav.Link href="" >Nothing yet</Nav.Link>

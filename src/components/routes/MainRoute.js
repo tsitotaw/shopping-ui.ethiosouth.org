@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { Route, Routes } from "react-router";
+import { Route, Routes  } from "react-router";
 import { useNavigate } from "react-router-dom";
 import Home from "../home/Home";
-import SignInAndSignUpPage from "../sign-in-and-sign-up/sign-in-and-sign-up.component";
 import SignIn from "../sign-in/sign-in.component";
+import SignUp from "../sign-up/sign-up.component";
 
-const MainRoute = () => {
+const MainRoute = (props) => {
     const navigate = useNavigate();
     const [isLoggedIn, setLoggedIn] = useState(false);
     
@@ -17,16 +17,15 @@ const MainRoute = () => {
         }
         
     };
-
     return (
         <>
-        {!isLoggedIn && <SignIn onLoggingIn={userLoggedInHandler}/>}
-        {isLoggedIn && 
             <Routes>
-                <Route path="/" element={ <Home />} />
-                <Route path="/signin" element={<SignIn />} />
+                
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/signin" element={<SignIn onLoggingIn={userLoggedInHandler}/>} />
+                {isLoggedIn && <Route path="/" element={ <Home />} /> }
+                
             </Routes>
-        }
         </>
     );
 };
