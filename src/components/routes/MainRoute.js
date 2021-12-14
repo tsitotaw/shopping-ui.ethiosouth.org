@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Route, Routes  } from "react-router";
 import { useNavigate } from "react-router-dom";
+import ApproveSeller from "../approval/ApproveSeller";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartPage from "../cart-page/Cart-page";
 import Home from "../home/Home";
@@ -17,15 +18,19 @@ const MainRoute = (props) => {
     const userLoggedInHandler = data => {
         setLoggedIn(data);
         if (data) {
-            navigate("/", { replace: true });
+            // i want this to broadcast event
+            //navigate("/", { replace: true });
+            window.location.href = '/';
         }
 
     };
+    
     return (
         <>
                 <Routes>
-                    {isLoggedIn && <Route path="/" element={<Home onAdd={props.onAdd} />} /> }
-                    {isLoggedIn && <Route path="/product/create" element={<ProductAdd />} /> }
+                    <Route path="/" element={<Home onAdd={props.onAdd} />} />
+                    <Route path="/product/create" element={<ProductAdd />} />
+                    <Route path="/approve/seller" element={<ApproveSeller />} />
                     <Route path="/signin" element={<SignIn onLoggingIn={userLoggedInHandler}/>} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/cart" element={<CartPage cartItems={cartItems}

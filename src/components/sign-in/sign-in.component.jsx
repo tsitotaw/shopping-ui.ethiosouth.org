@@ -10,8 +10,8 @@ import { useNavigate } from 'react-router';
 const SignIn = (props) => {
 
   const navigate = useNavigate();
-  let [userName, setUserName] = useState('aadmin@gmail.com')
-  let [password, setPassword] = useState('admin')
+  let [userName, setUserName] = useState('abengo@gmail.com')
+  let [password, setPassword] = useState('123456')
 
   const handleSignin = event => {
     event.preventDefault();
