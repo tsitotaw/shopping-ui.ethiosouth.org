@@ -62,39 +62,40 @@ function App() {
     }).catch(err => {
       console.log(err);
     })
-
-  const loggedInUserHandler = (data) => {
-    setLoggedIn(true)
   }
 
+    const loggedInUserHandler = (data) => {
+      setLoggedIn(true)
+    }
 
-  let total = 0;
-  if (cartItems.length > 0) {
-    cartItems.map(item => total += item.price * item.qty)
+
+    let total = 0;
+    if (cartItems.length > 0) {
+      cartItems.map(item => total += item.price * item.qty)
+    }
+    let itemCount = 0;
+    if (cartItems) {
+      cartItems.map(item => itemCount += item.qty)
+    }
+    return (
+      <>
+        <Header onAdd={onAdd} cartItems={itemCount} />
+        <div className="content__container">
+          <MainRoute onAdd={onAdd}
+            cartItems={cartItems}
+            total={total}
+            onAdd={onAdd}
+
+            onRemove={onRemove}
+            onClearCartItem={onClearCartItem}
+            onDeleteItem={onDeleteItem}
+            onRemove={onRemove}
+            onClearCartItem={onClearCartItem}
+            onLoggedIn={loggedInUserHandler} />
+        </div>
+
+      </>
+    );
   }
-  let itemCount = 0;
-  if (cartItems) {
-    cartItems.map(item => itemCount += item.qty)
-  }
-  return (
-    <>
-      <Header onAdd={onAdd} cartItems={itemCount}/>
-      <div className="content__container">
-        <MainRoute onAdd={onAdd}
-          cartItems={cartItems}
-          total={total}
-          onAdd={onAdd}
-
-          onRemove={onRemove}
-          onClearCartItem={onClearCartItem}
-          onDeleteItem={onDeleteItem} />
-          onRemove={onRemove} 
-          onClearCartItem={onClearCartItem}
-          onLoggedIn={loggedInUserHandler}/>
-      </div>
-
-    </>
-  );
-}
 
 export default App;
