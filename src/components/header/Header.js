@@ -12,7 +12,7 @@ const Header = (props) => {
       };
 
     return (
-        <>
+        <div className="header">
             <Navbar bg="light" expand="lg">
                 <Container>
                     <Navbar.Brand href="#">
@@ -31,7 +31,7 @@ const Header = (props) => {
                     </div>
                 </Container>
             </Navbar>
-        </>
+        </div>
     )
 }
 

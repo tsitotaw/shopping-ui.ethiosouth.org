@@ -4,6 +4,7 @@ import './App.scss'
 import { useState } from 'react';
 import Header from './components/header/Header';
 import MainRoute from './components/routes/MainRoute';
+import axiosApiHelper from './api/axiosApiHelper';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -14,31 +15,31 @@ function App() {
     if (exist) {
       setCartItems(
         cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty + 1} : x
+          x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
         )
       );
     } else {
-      setCartItems([...cartItems, { ...product, qty: 1}]);
+      setCartItems([...cartItems, { ...product, qty: 1 }]);
     }
   };
 
   const onRemove = (product) => {
     const remove = cartItems.find((x) => x.id === product.id);
     if (remove) {
-      if(remove.qty > 1){
+      if (remove.qty > 1) {
         setCartItems(
           cartItems.map((x) =>
             x.id === product.id ? { ...remove, qty: remove.qty - 1 } : x
           )
         );
       }
-      else{
+      else {
         setCartItems(
           cartItems.filter((x) =>
             x.id !== product.id
           )
         );
-      } 
+      }
     }
   }
 
@@ -53,13 +54,23 @@ function App() {
     }
   }
 
+  const onDeleteItem = (item) => {
+    console.log(item)
+    axiosApiHelper.remove("products", item.id).then(res => {
+      console.log(res);
+    }).catch(err => {
+      console.log(err);
+    })
+
+  }
+
 
   let total = 0;
   if (cartItems.length > 0) {
     cartItems.map(item => total += item.price * item.qty)
   }
   let itemCount = 0;
-  if(cartItems){
+  if (cartItems) {
     cartItems.map(item => itemCount += item.qty)
   }
   return (
@@ -70,8 +81,9 @@ function App() {
           cartItems={cartItems}
           total={total}
           onAdd={onAdd}
-          onRemove={onRemove} 
-          onClearCartItem={onClearCartItem}/>
+          onRemove={onRemove}
+          onClearCartItem={onClearCartItem}
+          onDeleteItem={onDeleteItem} />
       </div>
 
     </>
