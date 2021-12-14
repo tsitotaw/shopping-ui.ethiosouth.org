@@ -78,7 +78,9 @@ const axiosApiHelper = (() => {
    const findAll = (resource, noAuth) => {
       let header_local = header;
       if(noAuth){
-         delete header.Authorization;
+         delete header_local.Authorization;
+      }else {
+         header_local["Authorization"] = "Bearer " + localStorage.getItem("token");
       }
       return axios({
          method: 'GET',

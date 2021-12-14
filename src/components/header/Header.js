@@ -24,7 +24,7 @@ const Header = (props) => {
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="me-auto">
                                 <Link className="nav-link" to="/" > Home</Link>
-                                {/* <Link className="nav-link" to="/signup" > SignUp</Link> */}
+                                <Link className="nav-link" to="/product/create" > Add Product</Link>
                                 <Nav.Link href="" onClick={onLogoutHandler}>Logout</Nav.Link>
                                 <Link  to="/cart" ><CartIcon onAdd={props.onAdd} cartItems={props.cartItems}/></Link>
                             </Nav>

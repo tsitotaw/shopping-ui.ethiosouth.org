@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartPage from "../cart-page/Cart-page";
 import Home from "../home/Home";
+import ProductAdd from "../product/ProductAdd";
 import SignIn from "../sign-in/sign-in.component";
 import SignUp from "../sign-up/SignUp.component";
 
@@ -22,15 +23,9 @@ const MainRoute = (props) => {
     };
     return (
         <>
-            {/* <Routes>
-                
-                <Route path="/signup" element={<SignUp />} />
-                <Route path="/signin" element={<SignIn onLoggingIn={userLoggedInHandler}/>} />
-                {isLoggedIn && <Route path="/" element={ <Home />} /> }
-                
-            </Routes> */}
                 <Routes>
                     {isLoggedIn && <Route path="/" element={<Home onAdd={props.onAdd} />} /> }
+                    {isLoggedIn && <Route path="/product/create" element={<ProductAdd />} /> }
                     <Route path="/signin" element={<SignIn onLoggingIn={userLoggedInHandler}/>} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/cart" element={<CartPage cartItems={cartItems}
