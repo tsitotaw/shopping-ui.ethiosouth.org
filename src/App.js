@@ -8,6 +8,7 @@ import axiosApiHelper from './api/axiosApiHelper';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const onAdd = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
@@ -62,6 +63,8 @@ function App() {
       console.log(err);
     })
 
+  const loggedInUserHandler = (data) => {
+    setLoggedIn(true)
   }
 
 
@@ -75,15 +78,19 @@ function App() {
   }
   return (
     <>
-      <Header onAdd={onAdd} cartItems={itemCount} />
+      <Header onAdd={onAdd} cartItems={itemCount}/>
       <div className="content__container">
         <MainRoute onAdd={onAdd}
           cartItems={cartItems}
           total={total}
           onAdd={onAdd}
+
           onRemove={onRemove}
           onClearCartItem={onClearCartItem}
           onDeleteItem={onDeleteItem} />
+          onRemove={onRemove} 
+          onClearCartItem={onClearCartItem}
+          onLoggedIn={loggedInUserHandler}/>
       </div>
 
     </>

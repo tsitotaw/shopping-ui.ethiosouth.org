@@ -1,0 +1,8 @@
+.invalid__message{
+    color: red;
+}
+
+.chkSeller {
+    display: flex;
+    margin-top: 40px;
+}
