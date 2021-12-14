@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Route, Routes  } from "react-router";
 import { useNavigate } from "react-router-dom";
+import ApproveReview from "../approval/ApproveReview";
 import ApproveSeller from "../approval/ApproveSeller";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartPage from "../cart-page/Cart-page";
@@ -31,6 +32,7 @@ const MainRoute = (props) => {
                     <Route path="/" element={<Home onAdd={props.onAdd} />} />
                     <Route path="/product/create" element={<ProductAdd />} />
                     <Route path="/approve/seller" element={<ApproveSeller />} />
+                    <Route path="/approve/review" element={<ApproveReview />} />
                     <Route path="/signin" element={<SignIn onLoggingIn={userLoggedInHandler}/>} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/cart" element={<CartPage cartItems={cartItems}
