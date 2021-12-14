@@ -1,5 +1,6 @@
 import React from "react";
 import CheckoutItem from "../checkout-item/checkout-item.component";
+import CustomButton from "../custom-button/custom-button.component";
 
 import './checkout.styles.scss';
 
@@ -31,6 +32,7 @@ const CartPage = ({ cartItems, total, onAdd, onRemove, onClearCartItem }) => {
                     onClearCartItem={onClearCartItem} />
             ))}
             <div className='total'>TOTAL: ${total}</div>
+           <CustomButton>CHECKOUT</CustomButton>
         </div>
     )
 }

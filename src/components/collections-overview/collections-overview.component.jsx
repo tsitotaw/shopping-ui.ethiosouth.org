@@ -1,17 +1,22 @@
 import React from 'react';
 
 import CollectionPreview from '../collection-preview/collection-preview.component';
-import SHOP_DATA from '../../shop.data';
 
 
 import './collections-overview.styles.scss';
 
-const CollectionsOverview = ({onAdd, cartItems}) => (
-  <div className='collections-overview'>
-    {SHOP_DATA.map(({ id, ...otherCollectionProps }) => (
-      <CollectionPreview key={id} {...otherCollectionProps} onAdd={onAdd} />
-    ))}
-  </div>
-);
+const CollectionsOverview = ({ onAdd, items, onDeleteItem }) => {
+  return (
+    <div className='collections-overview'>
+      {
+        items.map((item) => (
+          <CollectionPreview key={item.id}
+            items={[item]} onAdd={onAdd}
+            onDeleteItem={onDeleteItem} />
+        ))
+      }
+    </div>
+  )
+};
 
 export default CollectionsOverview;
