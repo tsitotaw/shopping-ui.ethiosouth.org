@@ -3,7 +3,7 @@ import { Alert, Button, Form, Table } from "react-bootstrap";
 import axiosApiHelper from "../../api/axiosApiHelper";
 import _ from 'lodash';
 
-const ApproveSeller = (props) => {
+const FollowSeller = (props) => {
 
     const [sellers, setSellers] = useState([]);
     const [operationSuccessful, setOperationSuccessful] = useState(false);
@@ -43,14 +43,13 @@ const ApproveSeller = (props) => {
     };
     return (
         <>
-            {operationSuccessful && <Alert variant="success">Seller Approved Successfully</Alert>}
-
+        {operationSuccessful && <Alert variant="success">Change Successfully Made</Alert>}
             <Table striped bordered hover>
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Seller Full Name</th>
-                        <th>Is Approved</th>
+                        <th>Is Following</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,7 +63,7 @@ const ApproveSeller = (props) => {
                                 </td>
                                 <td>
                                     <Button variant="primary" type="button" onClick={(e) => updateApprovalHandler(seller)}>
-                                        Update Approval
+                                        Follow / Unfollow
                                     </Button>
                                 </td>
                             </tr>
@@ -78,4 +77,4 @@ const ApproveSeller = (props) => {
     );
 }
 
-export default ApproveSeller;
+export default FollowSeller;

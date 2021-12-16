@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Form, Table } from "react-bootstrap";
+import { Alert, Button, Form, Table } from "react-bootstrap";
 import axiosApiHelper from "../../api/axiosApiHelper";
 import _ from 'lodash';
 
@@ -7,6 +7,7 @@ const ApproveReview = (props) => {
 
     const [reviews, setReviews] = useState([]);
     const [refresh, updateRefresh] = useState(false);
+    const [operationSuccessful, setOperationSuccessful] = useState(false);
 
     useEffect(() => {
         axiosApiHelper.findAll("productreviews").then((data) => {
@@ -23,13 +24,17 @@ const ApproveReview = (props) => {
         review.buyer = review.buyer.id;
         review.product = review.product.id;
         axiosApiHelper.update(review, "productreviews/review", review.id).then((data) => {
-            alert("Approved Successfully");
+            setOperationSuccessful(true);
+            setTimeout(() => {
+                setOperationSuccessful(false);
+            }, 2000);
             updateRefresh(true);
         });
     };
     
     return (
         <>
+                    {operationSuccessful && <Alert variant="success">Review Approved Successfully</Alert>}
             <Table striped bordered hover>
                 <thead>
                     <tr>

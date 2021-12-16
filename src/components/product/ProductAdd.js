@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Badge, Button, Col, Form, Row } from "react-bootstrap";
+import { Alert, Badge, Button, Col, Form, Row } from "react-bootstrap";
 import axiosApiHelper from "../../api/axiosApiHelper";
 import { useNavigate } from "react-router";
 import getTokenUser from "../../shared/lib/Util";
@@ -14,6 +14,7 @@ const ProductAdd = (props) => {
     const [productPoint, setProductPoint] = useState(0);
     const [productImg, setProductImg] = useState('');
     const [selectedCategory, setSelectedCategory] = useState({});
+    const [operationSuccessful, setOperationSuccessful] = useState(false);
 
     const onProductNameChange = (event) => {
         setProductName(event.target.value);
@@ -55,8 +56,12 @@ const ProductAdd = (props) => {
             "sellerId": getTokenUser.getLoggedInUserId()
         }, "products").then((data) => {
             console.log(data);
-            alert("Successfully Added");
-            navigator("/");
+            setOperationSuccessful(true);
+            setTimeout(() => {
+                setOperationSuccessful(false);
+                navigator("/");
+            }, 2000);
+            
         });
     };
 
@@ -68,6 +73,8 @@ const ProductAdd = (props) => {
     return (
         <Form noValidate >
             <h1><Badge bg="secondary">Add New Product</Badge></h1>
+            {operationSuccessful && <Alert variant="success"> Product Added Successfully </Alert>}
+
             <Row className="g-2">
                 <Col>
                     <Form.Group className="mb-3" controlId="formBasicFName">

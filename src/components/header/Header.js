@@ -28,6 +28,7 @@ const Header = (props) => {
                                 { getTokenUser.hasPermission('productadd') && getTokenUser.isLoggedInSellerApproved() && <Link className="nav-link" to="/product/create" > Add Product</Link> }
                                 { getTokenUser.hasPermission('sellerapprove') && <Link className="nav-link" to="/approve/seller" > Approve Seller</Link> }
                                 { getTokenUser.hasPermission('reviewapprove') && <Link className="nav-link" to="/approve/review" > Approve Review</Link> }
+                                { getTokenUser.hasPermission('followseller') && <Link className="nav-link" to="/follow" > Follow Seller</Link> }
                                 <Nav.Link href="" onClick={onLogoutHandler}>Logout</Nav.Link>
                                 <Link  to="/cart" ><CartIcon onAdd={props.onAdd} cartItems={props.cartItems}/></Link>
                             </Nav>

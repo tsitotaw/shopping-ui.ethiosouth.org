@@ -10,6 +10,7 @@ import ProductAdd from "../product/ProductAdd";
 import SignIn from "../sign-in/sign-in.component";
 import axiosApiHelper from "../../api/axiosApiHelper";
 import SignUp from "../sign-up/SignUp.component";
+import FollowSeller from "../approval/FollowSeller";
 
 const MainRoute = (props) => {
     const { cartItems, total, 
@@ -22,8 +23,6 @@ const MainRoute = (props) => {
     const userLoggedInHandler = data => {
         setLoggedIn(data);
         if (data) {
-            // i want this to broadcast event
-            //navigate("/", { replace: true });
             window.location.href = '/';
         }
 
@@ -43,11 +42,12 @@ const MainRoute = (props) => {
         <>
                 <Routes>
                     <Route path="/" element={<Home onAdd={props.onAdd} items={items} onDeleteItem={onDeleteItem} />} />
-                    <Route path="/signin" element={<SignIn />} />
+                    {/* <Route path="/signin" element={<SignIn />} /> */}
                     <Route path="/" element={<Home onAdd={props.onAdd} />} />
                     <Route path="/product/create" element={<ProductAdd />} />
                     <Route path="/approve/seller" element={<ApproveSeller />} />
                     <Route path="/approve/review" element={<ApproveReview />} />
+                    <Route path="/follow" element={<FollowSeller />} />
                     <Route path="/signin" element={<SignIn onLoggingIn={userLoggedInHandler}/>} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/cart" element={<CartPage cartItems={cartItems}

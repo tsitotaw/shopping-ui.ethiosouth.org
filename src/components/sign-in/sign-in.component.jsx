@@ -11,7 +11,7 @@ const SignIn = (props) => {
 
   const navigate = useNavigate();
   let [userName, setUserName] = useState('aadmin@gmail.com')
-  let [password, setPassword] = useState('admin')
+  let [password, setPassword] = useState('123456')
 
   const handleSignin = event => {
     event.preventDefault();
