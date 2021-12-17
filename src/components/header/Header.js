@@ -6,11 +6,12 @@ import CartIcon from "../cart-icon/cart-icon.component";
 import getTokenUser from "../../shared/lib/Util";
 
 
-const Header = (props) => {
-
+const Header = (props) => { 
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
     const onLogoutHandler = (event) => {
         localStorage.removeItem("token");
         window.location.href = '/signin';
+        setIsLoggedIn(false);
       };
 
     return (
@@ -20,7 +21,7 @@ const Header = (props) => {
                     <Navbar.Brand href="#">
                         <img src={logo} alt="EthioSouth Mini Market" height="100px;" /> online shopping
                     </Navbar.Brand>
-                    <div class="flex-container">
+                    <div className="flex-container">
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="me-auto">
@@ -29,7 +30,8 @@ const Header = (props) => {
                                 { getTokenUser.hasPermission('sellerapprove') && <Link className="nav-link" to="/approve/seller" > Approve Seller</Link> }
                                 { getTokenUser.hasPermission('reviewapprove') && <Link className="nav-link" to="/approve/review" > Approve Review</Link> }
                                 { getTokenUser.hasPermission('followseller') && <Link className="nav-link" to="/follow" > Follow Seller</Link> }
-                                <Link className="nav-link" to="/orders">View Orders</Link>
+                                { getTokenUser.hasPermission('vieworders') && <Link className="nav-link" to="/orders">View Orders</Link>}
+                                 {getTokenUser.hasPermission('viewproductslist') && <Link className="nav-link" to="/products">Products List</Link>}
                                 <Nav.Link href="" onClick={onLogoutHandler}>Logout</Nav.Link>
                                 <Link  to="/cart" ><CartIcon onAdd={props.onAdd} cartItems={props.cartItems}/></Link>
                             </Nav>

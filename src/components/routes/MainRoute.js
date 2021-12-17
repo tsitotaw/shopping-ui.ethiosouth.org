@@ -12,6 +12,7 @@ import axiosApiHelper from "../../api/axiosApiHelper";
 import SignUp from "../sign-up/SignUp.component";
 import FollowSeller from "../approval/FollowSeller";
 import OrderList from "../order/OrderList";
+import ProductReview from "../product/ProductReview";
 
 const MainRoute = (props) => {
     const { cartItems, total, 
@@ -49,6 +50,7 @@ const MainRoute = (props) => {
                     <Route path="/approve/seller" element={<ApproveSeller />} />
                     <Route path="/approve/review" element={<ApproveReview />} />
                     <Route path="/orders" element={<OrderList />} />
+                    <Route path="/products" element={<ProductReview/>}/>
                     <Route path="/follow" element={<FollowSeller />} />
                     <Route path="/signin" element={<SignIn onLoggingIn={userLoggedInHandler}/>} />
                     <Route path="/signup" element={<SignUp />} />
