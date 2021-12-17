@@ -29,6 +29,7 @@ const Header = (props) => {
                                 { getTokenUser.hasPermission('sellerapprove') && <Link className="nav-link" to="/approve/seller" > Approve Seller</Link> }
                                 { getTokenUser.hasPermission('reviewapprove') && <Link className="nav-link" to="/approve/review" > Approve Review</Link> }
                                 { getTokenUser.hasPermission('followseller') && <Link className="nav-link" to="/follow" > Follow Seller</Link> }
+                                <Link className="nav-link" to="/orders">View Orders</Link>
                                 <Nav.Link href="" onClick={onLogoutHandler}>Logout</Nav.Link>
                                 <Link  to="/cart" ><CartIcon onAdd={props.onAdd} cartItems={props.cartItems}/></Link>
                             </Nav>

@@ -9,7 +9,7 @@ const ApproveSeller = (props) => {
     const [operationSuccessful, setOperationSuccessful] = useState(false);
 
     useEffect(() => {
-        axiosApiHelper.findAll("customers").then((data) => {
+        axiosApiHelper.findAll("customers", true).then((data) => {
             if (_.has(data, 'data')) {
                 let customers = data.data;
                 let sellers = _.filter(customers, { isSeller: true });

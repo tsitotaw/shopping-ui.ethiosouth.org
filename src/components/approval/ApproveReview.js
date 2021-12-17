@@ -10,7 +10,7 @@ const ApproveReview = (props) => {
     const [operationSuccessful, setOperationSuccessful] = useState(false);
 
     useEffect(() => {
-        axiosApiHelper.findAll("productreviews").then((data) => {
+        axiosApiHelper.findAll("productreviews", true).then((data) => {
             if (_.has(data, 'data')) {
                 let reviews = data.data;
                 setReviews(reviews);
