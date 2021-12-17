@@ -18,6 +18,7 @@ const CollectionItem = ({ item, onAdd, cartItems, onDeleteItem }) => {
       
       <div className='collection-footer'>
         <span className='name'>{name}</span>
+        <span className='price'>${price}</span>
 
       </div>
       <CustomButton

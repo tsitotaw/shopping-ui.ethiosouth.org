@@ -29,7 +29,7 @@ const MainRoute = (props) => {
     };
 
     useEffect(() => {
-        axiosApiHelper.findAll("products").then(result => {
+        axiosApiHelper.findAll("products", true).then(result => {
             console.log(result);
             setItems(result.data);
         }
