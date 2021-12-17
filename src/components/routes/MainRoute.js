@@ -15,7 +15,7 @@ import OrderList from "../order/OrderList";
 
 const MainRoute = (props) => {
     const { cartItems, total, 
-        onAdd, onRemove, onClearCartItem, onDeleteItem } = props;
+        onAdd, onRemove, onClearCartItem, onDeleteItem, onClearCart } = props;
     const navigate = useNavigate();
     const [isLoggedIn, setLoggedIn] = useState(false);
     const [items, setItems] = useState([]);
@@ -56,7 +56,8 @@ const MainRoute = (props) => {
                         total={total}
                         onAdd={onAdd}
                         onRemove={onRemove}
-                        onClearCartItem={onClearCartItem} />} />
+                        onClearCartItem={onClearCartItem}
+                        onClearCart={onClearCart} />} />
                 </Routes>
         </>
     );
